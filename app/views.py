@@ -10,8 +10,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from app.forms import TaskCustomForm
 from app.models import Task
 
-from app.tasks import send_test_email
-
 
 def register_or_login_page(request):
     return render(request, 'app/home.html')
