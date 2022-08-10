@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 class="border-bottom p-3">Statistic of my tasks</h1>
+    <div class="row justify-content-center p-2">
+        <div class="col-8">
+            <h4> All tasks of {{user.first_name}}: {{all_tasks}} </h4>
+        </div>
+    </div>
+    <div class="row justify-content-center p-2">
+        <div class="col-8">
+            <h3> Number of tasks by status </h3>
+        </div>
+    </div>
+    <div class="row justify-content-between ">
+        <div class="col-4">
+            <h5> To do: {{status_todo}} </h5>
+        </div>
+        <div class="col-4">
+            <h5> In progress: {{status_in_progress}} </h5>
+        </div>
+    </div>
+    <div class="row justify-content-between ">
+        <div class="col-4">
+            <h5> Blocked: {{status_blocked}} </h5>
+        </div>
+        <div class="col-4">
+            <h5> Finished: {{status_finished}} </h5>
+        </div>
+    </div>
+    <div class="row justify-content-center p-2">
+        <div class="col-12">
+            <h4> Average duration of the task:
+                {% if statistic %}
+                    It is impossible to calculate the statistics, most likely there are no completed tasks.
+                {% else %}
+                    {{average_duration_of_the_task}}
+                {% endif %}
+            </h4>
+        </div>
+    </div>
+{% endblock %}

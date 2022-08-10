@@ -1,0 +1,18 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+{% block content %}
+{% if user.is_superuser  %}
+    <fieldset class="module">
+        <h3>User count: {{ users_count }} </h3>
+        <h3>Tasks count: {{ tasks_count }}</h3>
+        <h3>Tasks with status to do: {{ tasks_status_todo }}</h3>
+        <h3>Tasks with status in_progress: {{ tasks_status_in_progress }}</h3>
+        <h3>Tasks with status blocked: {{ tasks_status_blocked }}</h3>
+        <h3>Tasks with status finished: {{ tasks_status_finished }}</h3>
+        <h3>number of users registered in the last week: {{ last_registered_users }}</h3>
+    </fieldset>
+
+{% else %}
+<h4>You must be an Admin to see this page</h4>
+{% endif %}
+{% endblock %}

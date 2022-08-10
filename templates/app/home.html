@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="row">
+            <div ><h1 class="text-center"> All {{user.first_name}} tasks </h1></div>
+        </div>
+        <div class="row justify-content-between">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Task text</th>
+                  <th scope="col">Deadline date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for task in tasks %}
+                <tr>
+                  <th scope="row"><a href="{% url 'app:task-detail' task.id %}">{{ task.name|capfirst }}</a></th>
+                  <td>{{ task.full_text|truncatechars:30 }}</td>
+                  <td>{{ task.deadline_date }}</td>
+                </tr>
+                {% endfor %}
+
+              <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li>
+                    <span><a href="?page={{ page_obj.previous_page_number }}">Previous</a></span>
+                    </li>
+                {% endif %}
+                    <li class="">
+                        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+                    </li>
+                {% if page_obj.has_next %}
+                    <li>
+                    <span><a href="?page={{ page_obj.next_page_number }}">Next</a></span>
+                    </li>
+                {% endif %}
+            </ul>
+
+
+              </tbody>
+            </table>
+
+        </div>
+
+    {% else %}
+        <div class="row text-center">
+            <h1>Please <a href="{% url 'login' %}"> login </a> or <a href="{% url 'register' %}"> register </a></h1>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
