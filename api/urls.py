@@ -16,6 +16,4 @@ urlpatterns = [
     path('tasks/', include(router_user_task.urls)),
 
     path('user/', include(router_user_data.urls)),
-
-    path('get/profile', get_user, )
 ]

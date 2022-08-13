@@ -1,5 +1,5 @@
 from datetime import date
-
+from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import forms
 from django.http import HttpResponseRedirect
@@ -9,6 +9,7 @@ from django.views.generic import ListView, DetailView, CreateView
 
 from app.forms import TaskCustomForm
 from app.models import Task
+
 
 
 def register_or_login_page(request):
@@ -63,11 +64,6 @@ def set_status(request, pk, set_status):
 
 
 def statistics(request):
-
-    '''Celery test'''
-
-    # send_test_email.delay()
-    ''' End celery test '''
 
     tasks = Task.objects.filter(owner=request.user)
     finished_tasks = tasks.exclude(finished_date__isnull=True)

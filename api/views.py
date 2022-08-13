@@ -123,7 +123,3 @@ class UserViewSet(RetrieveModelMixin,
     def get_object(self):
         return self.request.user
 
-
-@api_view(http_method_names=['GET'])
-def get_user(request):
-    return Response({'msg': f'Hello {request.user.id}'})

@@ -17,3 +17,7 @@ class User(AbstractUser):
 
     def get_task_count(self):
         return self.tasks.all().count()
+
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'

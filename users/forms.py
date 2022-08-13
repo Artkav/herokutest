@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm as DjangoUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm as DjangoAuthenticationForm
 from django import forms
 from django.core.exceptions import ValidationError
+from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
 from users.utils import send_email_for_verify
@@ -54,4 +55,3 @@ class UserCreationForm(DjangoUserCreationForm):
         model = User
         fields = ("email", "first_name", "last_name", "position_in_company")
 
-# "username",

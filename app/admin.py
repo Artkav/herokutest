@@ -11,8 +11,8 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ('name', 'short_text', 'owner',)
     search_fields = ('name',)
     list_filter = ('owner__first_name',)
-    fields = ('name', 'short_text', 'owner', 'status')
-    readonly_fields = ('owner', 'short_text')
+    fields = ('name', 'full_text', 'owner', 'status', )
+    readonly_fields = ('owner',)
 
 
 admin.site.register(Task, TaskAdmin)
